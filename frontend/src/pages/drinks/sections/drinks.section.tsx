@@ -1,29 +1,10 @@
 import React, { useState, useMemo } from "react";
-import Text from "../../../components/Text";
-import Card from "../../../components/Card";
-import Filters from "./FiltersSection";
-import Search from "../../../components/Search";
-
-interface Drink {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  oldPrice: number;
-  discount: number;
-  rating: number;
-}
-
-interface Filter {
-  label: string;
-  type: "discount" | "rating";
-}
-
-interface DrinksProps {
-  drinks: Drink[];
-  error: string | null;
-}
+import Text from "../../../components/text.component";
+import Card from "../../../components/card.component";
+import Filters from "./filters.section";
+import Search from "../../../components/search.component";
+import { DrinksProps } from "../../../interfaces/drink.interface";
+import { Filter } from "../utils";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");

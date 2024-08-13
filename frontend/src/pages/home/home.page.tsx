@@ -1,31 +1,28 @@
-import { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import HeaderSection from "./sections/HeaderSection";
-import AboutSection from "./sections/AboutSection";
-import DrinksSection from "./sections/DrinksSection";
-import OfferSection from "./sections/OfferSection";
-import StepsSection from "./sections/StepsSection";
+import { useEffect, useRef } from "react";
+import HeaderSection from "./sections/header.section";
+import AboutSection from "./sections/about.section";
+import DrinksSection from "./sections/drinks.section";
+import OfferSection from "./sections/offer.section";
+import StepsSection from "./sections/steps.section";
 import img1 from "../../assets/drinks.png";
 import img2 from "../../assets/cart.png";
 import img3 from "../../assets/enjoy.png";
-import Footer from "../../components/Footer";
-
-interface Drink {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  oldPrice: number;
-  rating: number;
-  discount: number;
-}
-
-const API_URL = "http://localhost:3000/api/drinks";
+import Footer from "../../components/footer.component";
+import { AppDispatch } from "../../store/config";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDrinks, selectError, selectLoading } from "../../store/slices/drinks.slice";
+import { fetchDrinks } from "../../store/actions/drinks.actions";
 
 const Home: React.FC = () => {
-  const [drinks, setDrinks] = useState<Drink[]>([]);
-  const [error, setError] = useState<string | null>(null);
+
+  const dispatch: AppDispatch = useDispatch();
+  const drinks = useSelector(selectDrinks);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchDrinks());
+  }, [dispatch]);
   const aboutRef = useRef<HTMLDivElement>(null);
 
   const scrollToAbout = () => {
@@ -33,20 +30,6 @@ const Home: React.FC = () => {
       aboutRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
-  useEffect(() => {
-    const fetchDrinks = async () => {
-      try {
-        const { data } = await axios.get<Drink[]>(API_URL);
-        setDrinks(data);
-      } catch (err) {
-        setError("Error fetching drinks.");
-        console.error("Error fetching drinks:", err);
-      }
-    };
-
-    fetchDrinks();
-  }, []);
 
   const stepsData = [
     { title: "Paso 1", description: "Elige tus tragos de preferencia de nuestra amplia variedad de opciones", img: img1 },
@@ -56,6 +39,10 @@ const Home: React.FC = () => {
 
   return (
     <div>
+       {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
       <HeaderSection scrollToAbout={scrollToAbout} />
       <div ref={aboutRef} className="flex flex-col md:flex-row">
         <AboutSection />
@@ -64,6 +51,8 @@ const Home: React.FC = () => {
       <DrinksSection drinks={drinks} error={error} />
       <StepsSection steps={stepsData} />
       <Footer />
+      </div>
+      )}
     </div>
   );
 };

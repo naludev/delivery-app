@@ -1,23 +1,8 @@
 import React from "react";
-import Text from "../../../components/Text";
-import Card from "../../../components/Card";
-import LinkButtonSolid from "../../../components/LinkButtonSolid";
-
-interface Drink {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  oldPrice: number;
-  rating: number;
-  discount: number;
-}
-
-interface DrinksProps {
-  drinks: Drink[];
-  error: string | null;
-}
+import Text from "../../../components/text.component";
+import Card from "../../../components/card.component";
+import LinkButtonSolid from "../../../components/solidbutton.component";
+import { DrinksProps } from "../../../interfaces/drink.interface";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   return (
@@ -30,7 +15,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center px-2 py-5">
             {drinks.map((drink) => (
               <Card
-                key={drink.id}
+                key={drink.name}
                 imageUrl={drink.image}
                 title={drink.name}
                 description={drink.description}

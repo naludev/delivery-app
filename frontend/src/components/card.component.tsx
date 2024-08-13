@@ -1,6 +1,6 @@
 import React from "react";
-import Text from "./Text";
-import Rating from "./Rating";
+import Text from "./text.component";
+import Rating from "./rating.component";
 
 interface CardProps {
   imageUrl: string;

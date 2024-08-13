@@ -2,7 +2,7 @@ import Logo from '../assets/instatragos.png';
 import email from '../assets/email.png';
 import ig from '../assets/ig.png';
 import wsp from '../assets/wsp.png';
-import Text from './Text';
+import Text from './text.component';
 
 const Footer = () => {
   return (

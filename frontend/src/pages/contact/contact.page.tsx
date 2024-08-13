@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Logo from "../../assets/instatragos.png";
 
-import Footer from "../../components/Footer";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Text from "../../components/Text";
+import Footer from "../../components/footer.component";
+import Button from "../../components/button.component";
+import Input from "../../components/input.component";
+import Text from "../../components/text.component";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({

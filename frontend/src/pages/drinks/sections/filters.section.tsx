@@ -1,16 +1,7 @@
 import React from "react";
-import Text from "../../../components/Text";
-import Button from "../../../components/Button";
-
-interface Filter {
-  label: string;
-  type: "discount" | "rating";
-}
-
-interface FiltersProps {
-  selectedFilters: Filter[];
-  toggleFilter: (filter: Filter) => void;
-}
+import Text from "../../../components/text.component";
+import Button from "../../../components/button.component";
+import { Filter, FiltersProps } from "../utils";
 
 const Filters: React.FC<FiltersProps> = ({ selectedFilters, toggleFilter }) => {
   const filters: Filter[] = [

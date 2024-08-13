@@ -1,15 +1,6 @@
 import { forwardRef } from "react";
-import Text from "../../../components/Text";
-
-interface Step {
-  title: string;
-  description: string;
-  img: string;
-}
-
-interface StepsProps {
-  steps: Step[];
-}
+import Text from "../../../components/text.component";
+import { Step, StepsProps } from "../utils";
 
 const StepCard: React.FC<Step> = ({ title, description, img }) => (
   <div className="p-4 flex flex-col items-center">
