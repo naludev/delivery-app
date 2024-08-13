@@ -11,6 +11,7 @@ interface Drink {
   image: string;
   oldPrice: number;
   rating: number;
+  discount: number;
 }
 
 interface DrinksProps {
@@ -36,7 +37,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
                 price={`$${drink.price}`}
                 oldPrice={`$${drink.oldPrice}`}
                 rating={drink.rating}
-                discount="39% OFF"
+                discount={drink.discount}
                 onAddToCart={() => alert("Added to cart")}
               />
             ))}

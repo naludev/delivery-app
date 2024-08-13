@@ -10,7 +10,7 @@ interface Drink {
   price: number;
   image: string;
   oldPrice: number;
-  discount: string;
+  discount: number;
   rating: number;
 }
 

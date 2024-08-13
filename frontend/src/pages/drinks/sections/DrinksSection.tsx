@@ -11,7 +11,7 @@ interface Drink {
   price: number;
   image: string;
   oldPrice: number;
-  discount: string;
+  discount: number;
   rating: number;
 }
 
@@ -46,9 +46,9 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
         drink.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesFilters = selectedFilters.every(filter => {
-        if (filter.type === "discount") {
-          return drink.discount.includes(filter.label);
-        }
+        // if (filter.type === "discount") {
+        //   return drink.discount.includes(filter.label);
+        // }
         if (filter.type === "rating") {
           return filter.label === "Rating 5" ? drink.rating === 5 : drink.rating >= 4;
         }

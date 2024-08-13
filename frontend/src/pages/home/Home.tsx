@@ -18,6 +18,7 @@ interface Drink {
   image: string;
   oldPrice: number;
   rating: number;
+  discount: number;
 }
 
 const API_URL = "http://localhost:3000/api/drinks";

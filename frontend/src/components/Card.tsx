@@ -9,7 +9,7 @@ interface CardProps {
   price: string;
   oldPrice?: string;
   rating?: number;
-  discount?: string;
+  discount?: number;
   onAddToCart?: () => void;
 }
 
@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
         <img className="object-cover w-full h-full" src={imageUrl} alt="product image" />
         {discount && (
           <span className="absolute top-0 left-0 m-2 rounded-full bg-red-600 px-2 text-center text-sm font-bold text-white">
-            {discount}
+            {discount}%
           </span>
         )}
       </a>
