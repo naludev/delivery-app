@@ -14,7 +14,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());  
 
-// Configuración de Swagger
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -72,24 +71,19 @@ const swaggerOptions = {
   apis: ['./src/routes/*.ts'],
 };
 
-
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Conectar a MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/yourdatabase')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Middleware
 app.use(express.json());
 
-// Rutas
 app.use('/api', userRoutes);
 app.use('/api', sessionRoutes);
 app.use('/api', drinksRoutes)
 
-// Manejo de errores
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Not Found' });
 });

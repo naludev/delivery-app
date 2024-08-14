@@ -1,7 +1,13 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../store/config';
+import { selectToken, logout } from '../store/slices/session.slice';
+import { logoutAPI } from '../store/api/session.api';
+
 import Logo from '../assets/instatragos.png';
-import User from '../assets/user.png'
+import User from '../assets/user.png';
+import { checkSessionStatus } from '../store/actions/session.actions';
 
 const navItems = [
   { title: 'inicio', url: '/' },
@@ -12,13 +18,37 @@ const navItems = [
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const token = useSelector((state: RootState) => selectToken(state));
+  const isLoggedIn = !!token;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(checkSessionStatus());
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleUserMenu = () => {
+    setIsUserMenuOpen(!isUserMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logoutAPI();
+      dispatch(logout());
+      navigate('/iniciar-sesion');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
+
   return (
-    <nav className="bg-gray-950 text-white ">
+    <nav className="bg-gray-950 text-white">
       <div className="flex flex-wrap justify-between items-center px-2 w-full">
         <img className="object-cover w-20 h-full" src={Logo} alt="Logo" />
         <div className="hidden md:flex space-x-4 mr-2">
@@ -27,8 +57,32 @@ const Nav = () => {
               {title}
             </Link>
           ))}
-          <img className="object-cover w-5 h-full invert mr-auto" src={User} alt="User Icon"  />
-          </div>
+          <img className="object-cover w-5 h-full invert mr-auto cursor-pointer" src={User} alt="User Icon" onClick={toggleUserMenu} />
+          {isUserMenuOpen && (
+            <div className="absolute right-0 mt-12 w-48 bg-gray-800 rounded-lg shadow-lg z-30">
+              {isLoggedIn ? (
+                <button 
+                  className="block px-4 py-2 text-white hover:bg-gray-700 w-full text-left"
+                  onClick={() => {
+                    handleLogout(); 
+                    setIsUserMenuOpen(false);
+                  }}
+                >
+                  Salir
+                </button>
+              ) : (
+                <>
+                  <Link to="/iniciar-sesion" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>
+                    Iniciar sesión
+                  </Link>
+                  <Link to="/settings" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>
+                    Registrarse
+                  </Link>
+                </>
+              )}
+            </div>
+          )}
+        </div>
         <button className="md:hidden text-white" onClick={toggleMenu}>
           {isMenuOpen ? (
             <svg
@@ -72,15 +126,24 @@ const Nav = () => {
           <ul className="space-y-4 text-center">
             {navItems.map(({ title, url }) => (
               <li key={title}>
-                <Link
-                  to={url}
-                  className="block px-6 py-4 text-white text-xl"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link to={url} className="bg-teal-accent-400 inline-block rounded-full px-3 py-px text-md font-semibold uppercase tracking-wider text-white" onClick={() => setIsMenuOpen(false)}>
                   {title}
                 </Link>
               </li>
             ))}
+            {isLoggedIn ? (
+              <li>
+                <button className="bg-teal-accent-400 rounded-full px-3 py-px text-md uppercase font-bold tracking-wider text-white" onClick={handleLogout}>
+                  Salir
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link to="/iniciar-sesion" className="bg-teal-accent-400 rounded-full px-3 py-px text-xs uppercase font-bold tracking-wider text-white" onClick={() => setIsMenuOpen(false)}>
+                  Iniciar sesión
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

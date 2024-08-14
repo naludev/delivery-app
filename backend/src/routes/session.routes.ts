@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { login, logout, isAuthenticated } from '../controllers/session.controller';
+import { login, logout, isAuthenticated, checkSessionStatus } from '../controllers/session.controller';
 
 const router = express.Router();
 
@@ -41,5 +41,19 @@ router.post('/login', login);
  *         description: Successfully logged out
  */
 router.post('/logout', isAuthenticated, logout);
+
+/**
+ * @swagger
+ * /session/status:
+ *   get:
+ *     summary: Check if the user is logged in
+ *     tags: [Sessions]
+ *     responses:
+ *       200:
+ *         description: User is logged in
+ *       401:
+ *         description: User is not logged in
+ */
+router.get('/session/status', isAuthenticated,checkSessionStatus);
 
 export default router;

@@ -3,9 +3,9 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IDrink extends Document {
   name: string;
   description: string;
-  rating: number; // del 1 al 5
+  rating: number;
   price: number;
-  discount: number; // porcentaje de descuento
+  discount: number;
   oldPrice: number;
 }
 
@@ -18,7 +18,6 @@ const DrinkSchema: Schema = new Schema({
   oldPrice: { type: Number, required: true },
 });
 
-// Calcular oldPrice antes de guardar el drink
 DrinkSchema.pre<IDrink>('save', function (next) {
   if (this.isModified('price') || this.isModified('discount')) {
     this.oldPrice = this.price / (1 - this.discount / 100);

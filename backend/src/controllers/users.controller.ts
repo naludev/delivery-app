@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import userModel from '../models/users.model';
 
-// Crear un nuevo usuario
 export const createUser = async (req: Request, res: Response) => {
   try {
     const newUser = new userModel(req.body);
@@ -12,7 +11,6 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-// Obtener todos los usuarios
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await userModel.find();
@@ -22,7 +20,6 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
-// Obtener un usuario por ID
 export const getUserById = async (req: Request, res: Response) => {
   try {
     const user = await userModel.findById(req.params.id);
@@ -36,7 +33,6 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-// Actualizar un usuario por ID
 export const updateUserById = async (req: Request, res: Response) => {
   try {
     const updatedUser = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -50,7 +46,6 @@ export const updateUserById = async (req: Request, res: Response) => {
   }
 };
 
-// Eliminar un usuario por ID
 export const deleteUserById = async (req: Request, res: Response) => {
   try {
     const deletedUser = await userModel.findByIdAndDelete(req.params.id);

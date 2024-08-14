@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import DrinkModel from '../models/drinks.model';
 
-// Crear un nuevo drink
 export const createDrink = async (req: Request, res: Response) => {
   try {
     const newDrink = new DrinkModel(req.body);
@@ -12,7 +11,6 @@ export const createDrink = async (req: Request, res: Response) => {
   }
 };
 
-// Obtener todos los drinks
 export const getAllDrinks = async (req: Request, res: Response) => {
   try {
     const drinks = await DrinkModel.find();
@@ -22,7 +20,6 @@ export const getAllDrinks = async (req: Request, res: Response) => {
   }
 };
 
-// Obtener un drink por ID
 export const getDrinkById = async (req: Request, res: Response) => {
   try {
     const drink = await DrinkModel.findById(req.params.id);
@@ -36,7 +33,6 @@ export const getDrinkById = async (req: Request, res: Response) => {
   }
 };
 
-// Actualizar un drink por ID
 export const updateDrinkById = async (req: Request, res: Response) => {
   try {
     const updatedDrink = await DrinkModel.findByIdAndUpdate(req.params.id, req.body, { new: true });

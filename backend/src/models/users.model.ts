@@ -20,7 +20,6 @@ const UserSchema: Schema = new Schema({
   age: { type: Number, required: true },
 });
 
-// Encriptar la contraseña antes de guardar el usuario
 UserSchema.pre<IUser>('save', async function (next) {
   if (!this.isModified('password')) return next();
 
@@ -30,7 +29,6 @@ UserSchema.pre<IUser>('save', async function (next) {
   next();
 });
 
-// Método para comparar la contraseña
 UserSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
   return bcrypt.compare(candidatePassword, this.password);
 };
