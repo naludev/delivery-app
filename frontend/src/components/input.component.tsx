@@ -1,14 +1,16 @@
 import React from "react";
 
 interface InputProps {
-  value: string;
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   name?: string;
   type?: string;
+  checked?: boolean;
+  className?: string;
 }
 
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder, name, type }) => {
+const Input: React.FC<InputProps> = ({ value, onChange, placeholder, name, type, checked, className }) => {
   return (
     <div className="relative mb-4 w-full pt-2">
       <input
@@ -16,8 +18,9 @@ const Input: React.FC<InputProps> = ({ value, onChange, placeholder, name, type 
         placeholder={placeholder || "Buscar..."}
         value={value}
         onChange={onChange}
-        className="p-2 pl-4 pr-10 w-full rounded bg-white text-slate-800"
+        className={className ? className : "p-2 pl-4 pr-10 w-full rounded bg-white text-slate-800"}
         name={name}
+        checked={checked}
       />
     </div>
   );

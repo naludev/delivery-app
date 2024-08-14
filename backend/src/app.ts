@@ -37,9 +37,9 @@ const swaggerOptions = {
             username: { type: 'string', example: 'username' },
             name: { type: 'string', example: 'John' },
             lastname: { type: 'string', example: 'Doe' },
-            age: { type: 'integer', example: 30 },
+            adult: { type: 'boolean', example: true },
           },
-          required: ['email', 'password', 'username', 'name', 'lastname', 'age'],
+          required: ['email', 'password', 'username', 'name', 'lastname', 'adult'],
         },
         Drink: {
           type: 'object',

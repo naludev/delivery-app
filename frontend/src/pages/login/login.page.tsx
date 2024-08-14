@@ -51,7 +51,7 @@ const Login: React.FC = () => {
                   Iniciar sesión
                 </Button>
               </div>
-              <LinkButtonOutline className="text-white w-full justify-center pt-5" label="REGISTRARSE" onClick={() => navigate('/registrarse')} />
+              <LinkButtonOutline className="text-white w-full justify-center pt-5" label="REGISTRARSE" onClick={() => navigate('/registro')} />
             </form>
           </div>
         </div>

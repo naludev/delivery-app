@@ -7,7 +7,7 @@ export interface IUser extends Document {
   username: string;
   name: string;
   lastname: string;
-  age: number;
+  adult: boolean;
   comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
 
@@ -17,7 +17,7 @@ const UserSchema: Schema = new Schema({
   username: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   lastname: { type: String, required: true },
-  age: { type: Number, required: true },
+  adult: { type: Boolean, required: true },
 });
 
 UserSchema.pre<IUser>('save', async function (next) {

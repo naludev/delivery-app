@@ -75,7 +75,7 @@ const Nav = () => {
                   <Link to="/iniciar-sesion" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>
                     Iniciar sesión
                   </Link>
-                  <Link to="/settings" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>
+                  <Link to="/registro" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>
                     Registrarse
                   </Link>
                 </>
@@ -138,10 +138,13 @@ const Nav = () => {
                 </button>
               </li>
             ) : (
-              <li>
+              <li className='flex flex-col gap-3'>
                 <Link to="/iniciar-sesion" className="bg-teal-accent-400 rounded-full px-3 py-px text-xs uppercase font-bold tracking-wider text-white" onClick={() => setIsMenuOpen(false)}>
                   Iniciar sesión
                 </Link>
+                <Link to="/registro" className="bg-teal-accent-400 rounded-full px-3 py-px text-xs uppercase font-bold tracking-wider text-white" onClick={() => setIsUserMenuOpen(false)}>
+                    Registrarse
+                  </Link>
               </li>
             )}
           </ul>
