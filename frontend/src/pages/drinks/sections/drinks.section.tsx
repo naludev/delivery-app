@@ -1,14 +1,14 @@
 import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import Text from "../../../components/text.component";
-import Card from "../../../components/card.component";
+import Text from "@components/text.component";
+import Card from "@components/card.component";
+import Search from "@components/search.component";
 import Filters from "./filters.section";
-import Search from "../../../components/search.component";
-import { DrinksProps } from "../../../interfaces/drink.interface";
+import { DrinksProps } from "@interfaces/drink.interface";
+import { ICartItem } from "@interfaces/cart.interface";
 import { Filter } from "../utils";
-import { addToCart, fetchCartTotalQuantity } from "../../../store/actions/cart.actions";
+import { addToCart, fetchCartTotalQuantity } from "@store/actions/cart.actions";
 import { unwrapResult } from '@reduxjs/toolkit';
-import { ICartItem } from "../../../interfaces/cart.interface";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   const dispatch = useDispatch();

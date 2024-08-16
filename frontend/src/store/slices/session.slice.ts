@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { login, logout as logoutAPI, checkSessionStatus } from '../actions/session.actions';
+import { login, logout as logoutAPI, checkSessionStatus } from '@actions/session.actions';
 import { RootState } from '../config';
 
 interface SessionState {

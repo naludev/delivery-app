@@ -1,7 +1,7 @@
 import React from "react";
-import Text from "./text.component";
-import Rating from "./rating.component";
-import Trago from '../assets/trago.jpg'
+import Text from "@components/text.component";
+import Rating from "@components/rating.component";
+import Trago from '@assets/trago.jpg'
 
 interface CardProps {
   imageUrl?: string;

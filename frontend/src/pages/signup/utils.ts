@@ -1,4 +1,4 @@
-import useFormValidation from "../../hooks/useFormValidation.hooks";
+import useFormValidation from "@hooks/useFormValidation.hooks";
 
 export interface FormData {
     email: string;

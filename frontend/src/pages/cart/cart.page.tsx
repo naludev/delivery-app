@@ -1,14 +1,14 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCart, selectCartLoading } from "../../store/slices/cart.slice";
-import { AppDispatch } from "../../store/config";
-import { fetchCart, fetchCartTotalQuantity, removeFromCart, clearCart, updateCartQuantity } from "../../store/actions/cart.actions";
-import Text from "../../components/text.component";
-import Button from "../../components/button.component";
-import QuantityInput from "../../components/inputqty.component";
-import DrinkImage from '../../assets/trago.jpg';
-import Papelera from '../../assets/papelera.png';
+import { selectCart, selectCartLoading } from "@store/slices/cart.slice";
+import { AppDispatch } from "@store/config";
+import { fetchCart, fetchCartTotalQuantity, removeFromCart, clearCart, updateCartQuantity } from "@store/actions/cart.actions";
+import Text from "@components/text.component";
+import Button from "@components/button.component";
+import QuantityInput from "@components/inputqty.component";
+import DrinkImage from '@assets/trago.jpg';
+import Papelera from '@assets/papelera.png';
 
 const Cart = () => {
   const dispatch = useDispatch<AppDispatch>();

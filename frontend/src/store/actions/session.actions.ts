@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginAPI, logoutAPI, checkSessionStatusAPI } from '../api/session.api';
-import { showToastWithTimeout } from '../slices/toast.slice';
+import { loginAPI, logoutAPI, checkSessionStatusAPI } from '@api/session.api';
+import { showToastWithTimeout } from '@slices/toast.slice';
 
 export const login = createAsyncThunk(
   'session/login',

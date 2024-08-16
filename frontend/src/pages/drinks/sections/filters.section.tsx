@@ -1,6 +1,6 @@
 import React from "react";
-import Text from "../../../components/text.component";
-import Button from "../../../components/button.component";
+import Text from "@components/text.component";
+import Button from "@components/button.component";
 import { Filter, FiltersProps } from "../utils";
 
 const Filters: React.FC<FiltersProps> = ({ selectedFilters, toggleFilter }) => {

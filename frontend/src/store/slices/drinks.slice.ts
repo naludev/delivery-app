@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../config';
-import { fetchDrinks } from '../actions/drinks.actions';
-import { Drink } from '../../interfaces/drink.interface';
+import { fetchDrinks } from '@actions/drinks.actions';
+import { Drink } from '@interfaces/drink.interface';
 
 interface DrinksState {
   drinks: Drink[];

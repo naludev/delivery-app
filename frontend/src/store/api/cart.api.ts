@@ -1,6 +1,6 @@
 // src/api/cart.api.ts
 import axios from 'axios';
-import { ICartItem } from '../../interfaces/cart.interface';
+import { ICartItem } from '@interfaces/cart.interface';
 
 const API_URL = "http://localhost:3000/api/cart";
 

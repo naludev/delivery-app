@@ -1,7 +1,7 @@
 import React from "react";
-import Text from "../../../components/text.component";
-import Oferta from "../../../assets/oferta.png";
-import LinkButtonSolid from "../../../components/solidbutton.component";
+import Text from "@components/text.component";
+import LinkButtonSolid from "@components/solidbutton.component";
+import Oferta from "@assets/oferta.png";
 
 const OfferSection: React.FC = () => {
   return (

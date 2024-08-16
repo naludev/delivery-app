@@ -1,6 +1,6 @@
-import { login } from '../../store/actions/session.actions'; 
 import { unwrapResult } from '@reduxjs/toolkit';
-import { AppDispatch } from '../../store/config';
+import { login } from '@store/actions/session.actions'; 
+import { AppDispatch } from '@store/config';
 
 export const handleLogin = async (
   dispatch: AppDispatch,

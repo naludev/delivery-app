@@ -1,13 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../config';
-import { IUser } from '../../interfaces/user.interface';
-import {
-  fetchUsers,
-  fetchUserById,
-  createUser,
-  updateUser,
-  deleteUser
-} from '../actions/users.actions';
+import { IUser } from '@interfaces/user.interface';
+import { fetchUsers, fetchUserById, createUser, updateUser, deleteUser } from '@actions/users.actions';
 
 interface UsersState {
   users: IUser[];

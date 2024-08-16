@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Text from "../../../components/text.component";
-import Card from "../../../components/card.component";
-import LinkButtonSolid from "../../../components/solidbutton.component";
-import { DrinksProps } from "../../../interfaces/drink.interface";
-import { ICartItem } from "../../../interfaces/cart.interface";
-import { addToCart, fetchCartTotalQuantity } from "../../../store/actions/cart.actions";
+import Text from "@components/text.component";
+import Card from "@components/card.component";
+import LinkButtonSolid from "@components/solidbutton.component";
+import { DrinksProps } from "@interfaces/drink.interface";
+import { ICartItem } from "@interfaces/cart.interface";
+import { addToCart, fetchCartTotalQuantity } from "@store/actions/cart.actions";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {

@@ -4,13 +4,13 @@ import AboutSection from "./sections/about.section";
 import DrinksSection from "./sections/drinks.section";
 import OfferSection from "./sections/offer.section";
 import StepsSection from "./sections/steps.section";
-import img1 from "../../assets/drinks.png";
-import img2 from "../../assets/cart.png";
-import img3 from "../../assets/enjoy.png";
-import { AppDispatch } from "../../store/config";
+import { AppDispatch } from "@store/config";
+import { selectDrinks, selectError, selectLoading } from "@store/slices/drinks.slice";
+import { fetchDrinks } from "@store/actions/drinks.actions";
+import img1 from "@assets/drinks.png";
+import img2 from "@assets/cart.png";
+import img3 from "@assets/enjoy.png";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDrinks, selectError, selectLoading } from "../../store/slices/drinks.slice";
-import { fetchDrinks } from "../../store/actions/drinks.actions";
 
 const Home: React.FC = () => {
 

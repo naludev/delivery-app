@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import Text from "../../../components/text.component";
+import Text from "@components/text.component";
 import { Step, StepsProps } from "../utils";
 
 const StepCard: React.FC<Step> = ({ title, description, img }) => (

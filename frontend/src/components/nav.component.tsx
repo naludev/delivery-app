@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../store/config";
-import { selectToken, logout } from "../store/slices/session.slice";
-import { logoutAPI } from "../store/api/session.api";
-
-import Logo from "../assets/instatragos.png";
-import User from "../assets/user.png";
-import Cart from "../assets/cart.png";
-import { checkSessionStatus } from "../store/actions/session.actions";
-import { selectCartTotalQuantity } from "../store/slices/cart.slice";
-import { fetchCartTotalQuantity } from "../store/actions/cart.actions";
+import { RootState, AppDispatch } from "@store/config";
+import { selectToken, logout } from "@store/slices/session.slice";
+import { checkSessionStatus } from "@store/actions/session.actions";
+import { selectCartTotalQuantity } from "@store/slices/cart.slice";
+import { fetchCartTotalQuantity } from "@store/actions/cart.actions";
+import { logoutAPI } from "@store/api/session.api";
+import Logo from "@assets/instatragos.png";
+import User from "@assets/user.png";
+import Cart from "@assets/cart.png";
 
 const navItems = [
   { title: "inicio", url: "/" },
@@ -30,14 +29,22 @@ const Nav = () => {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   dispatch(checkSessionStatus());
+  //   dispatch(fetchCartTotalQuantity());
+  // }, [dispatch]);
+
   useEffect(() => {
     const checkStatus = async () => {
       try {
+        // Intentar despachar el thunk y obtener el resultado
+        const result = await dispatch(checkSessionStatus()).unwrap();
+        console.log('Session status:', result); 
         dispatch(fetchCartTotalQuantity());
       } catch (error) {
         console.error('Error checking session status:', error);
         localStorage.removeItem('token');
-        dispatch(logout());
+        dispatch(logout()); // Actualiza el estado en Redux
       }
     };
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from '../../hooks/session.hooks';
-import { selectError } from '../../store/slices/session.slice';
-import { createUser } from '../../store/actions/users.actions';
-import { login } from '../../store/actions/session.actions';
-import Button from "../../components/button.component";
-import Input from "../../components/input.component";
-import Text from "../../components/text.component";
-import LinkButtonOutline from "../../components/outlinebutton.component";
+import { useAppDispatch, useAppSelector } from '@hooks/session.hooks';
+import { selectError } from '@store/slices/session.slice';
+import { createUser } from '@store/actions/users.actions';
+import { login } from '@store/actions/session.actions';
+import Button from "@components/button.component";
+import Input from "@components/input.component";
+import Text from "@components/text.component";
+import LinkButtonOutline from "@components/outlinebutton.component";
 import { validateForm, handleInputChange, isFormValid, FormData } from "./utils";
 
 const SignUp: React.FC = () => {

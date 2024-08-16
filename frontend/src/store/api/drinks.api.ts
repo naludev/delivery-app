@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Drink } from '../../interfaces/drink.interface';
+import { Drink } from '@interfaces/drink.interface';
 
 const API_URL = "http://localhost:3000/api/drinks";
 

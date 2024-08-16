@@ -18,7 +18,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": ".",  // Base del proyecto
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@store/*": ["src/store/*"],
+      "@slices/*": ["src/store/slices/*"],
+      "@api/*": ["src/store/api/*"],
+      "@actions/*": ["src/store/actions/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      // Agrega más alias según tus necesidades
+    }
   },
   "include": ["src"]
 }
