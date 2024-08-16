@@ -1,5 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { ICartItem } from '../interfaces/cart.interface';
+import { CartItemModel } from './cart.model';
 
 export interface IUser extends Document {
   email: string;
@@ -8,6 +10,7 @@ export interface IUser extends Document {
   name: string;
   lastname: string;
   adult: boolean;
+  cart: ICartItem[];
   comparePassword: (candidatePassword: string) => Promise<boolean>;
 }
 
@@ -18,6 +21,7 @@ const UserSchema: Schema = new Schema({
   name: { type: String, required: true },
   lastname: { type: String, required: true },
   adult: { type: Boolean, required: true },
+  cart: [CartItemModel.schema],
 });
 
 UserSchema.pre<IUser>('save', async function (next) {

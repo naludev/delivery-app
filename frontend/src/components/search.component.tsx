@@ -15,7 +15,7 @@ const Search: React.FC<InputProps> = ({ value, onChange, onClear, placeholder })
         placeholder={placeholder || "Buscar..."}
         value={value}
         onChange={onChange}
-        className="p-2 pl-4 pr-10 w-full rounded bg-gray-800 text-white"
+        className="p-2 pl-4 pr-10 w-full rounded bg-zinc-200 text-slate-800"
       />
       {value.length > 0 && (
         <button

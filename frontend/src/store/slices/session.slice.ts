@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { login, logout as logoutAPI, checkSessionStatus } from '../actions/session.actions'; // Renombramos logout para evitar conflictos con la acción
+import { login, logout as logoutAPI, checkSessionStatus } from '../actions/session.actions';
 import { RootState } from '../config';
 
 interface SessionState {
@@ -62,6 +62,10 @@ const sessionSlice = createSlice({
       .addCase(checkSessionStatus.fulfilled, (state, action: PayloadAction<{ message: string }>) => {
         state.loading = false;
         state.sessionStatus = action.payload.message;
+        if (action.payload.message === 'Token is not valid') {
+          state.token = null;
+          localStorage.removeItem('token');
+        }
         state.error = null;
       })
       .addCase(checkSessionStatus.rejected, (state, action) => {
@@ -79,6 +83,6 @@ export const selectLoading = (state: RootState) => state.session.loading;
 export const selectError = (state: RootState) => state.session.error;
 export const selectSessionStatus = (state: RootState) => state.session.sessionStatus;
 
-export const { logout } = actions; // Aquí exportamos la acción `logout`
+export const { logout } = actions;
 
 export default reducer;

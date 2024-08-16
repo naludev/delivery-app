@@ -1,5 +1,5 @@
 export interface Drink {
-    id: number;
+    _id: string;
     name: string;
     description: string;
     price: number;
@@ -11,5 +11,5 @@ export interface Drink {
 
   export interface DrinksProps {
     drinks: Drink[];
-    error: string | null;
+    error?: string | null;
   }

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../../assets/instatragos.png";
-
-import Footer from "../../components/footer.component";
 import Button from "../../components/button.component";
 import Input from "../../components/input.component";
 import Text from "../../components/text.component";
@@ -59,8 +57,6 @@ const Contact: React.FC = () => {
           <img src={Logo} className="w-2/3 object-contain" alt="Insta Tragos Logo" />
         </div>
       </div>
-
-      <Footer/>
     </div>
   );
 };

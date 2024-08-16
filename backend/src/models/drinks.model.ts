@@ -1,13 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-
-export interface IDrink extends Document {
-  name: string;
-  description: string;
-  rating: number;
-  price: number;
-  discount: number;
-  oldPrice: number;
-}
+import { IDrink } from '../interfaces/drink.interface';
 
 const DrinkSchema: Schema = new Schema({
   name: { type: String, required: true },

@@ -3,7 +3,8 @@ import {
   createDrink,
   getAllDrinks,
   getDrinkById,
-  updateDrinkById
+  updateDrinkById,
+  removeDrinkById
 } from '../controllers/drinks.controller';
 
 const router = express.Router();
@@ -93,5 +94,28 @@ router.get('/drinks/:id', getDrinkById);
  *         description: Bad request
  */
 router.put('/drinks/:id', updateDrinkById);
+
+/**
+ * @swagger
+ * /drinks/{id}:
+ *   delete:
+ *     summary: Delete a drink by ID
+ *     tags: [Drinks]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Drink ID
+ *     responses:
+ *       200:
+ *         description: Drink deleted successfully
+ *       404:
+ *         description: Drink not found
+ *       500:
+ *         description: Internal server error
+ */
+router.delete('/drinks/:id', removeDrinkById);
 
 export default router;

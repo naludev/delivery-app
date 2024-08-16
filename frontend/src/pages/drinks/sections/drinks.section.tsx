@@ -1,12 +1,17 @@
 import React, { useState, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import Text from "../../../components/text.component";
 import Card from "../../../components/card.component";
 import Filters from "./filters.section";
 import Search from "../../../components/search.component";
 import { DrinksProps } from "../../../interfaces/drink.interface";
 import { Filter } from "../utils";
+import { addToCart, fetchCartTotalQuantity } from "../../../store/actions/cart.actions";
+import { unwrapResult } from '@reduxjs/toolkit';
+import { ICartItem } from "../../../interfaces/cart.interface";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedFilters, setSelectedFilters] = useState<Filter[]>([]);
 
@@ -27,9 +32,6 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
         drink.description.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesFilters = selectedFilters.every(filter => {
-        // if (filter.type === "discount") {
-        //   return drink.discount.includes(filter.label);
-        // }
         if (filter.type === "rating") {
           return filter.label === "Rating 5" ? drink.rating === 5 : drink.rating >= 4;
         }
@@ -42,6 +44,18 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
 
   const hasSearchTerm = searchTerm.length > 0;
   const hasResults = filteredDrinks.length > 0;
+
+  const handleAddToCart = async (drinkId: string) => {
+    const item: ICartItem = { drinkId, quantity: 1 };
+    try {
+      const resultAction = await dispatch(addToCart(item) as any);
+      unwrapResult(resultAction);
+      // @ts-ignore
+      dispatch(fetchCartTotalQuantity());
+    } catch (error) {
+      console.error('Failed to add to cart: ', error);
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -61,7 +75,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center py-5">
               {filteredDrinks.map(drink => (
                 <Card
-                  key={drink.id}
+                  key={drink._id}
                   imageUrl={drink.image}
                   title={drink.name}
                   description={drink.description}
@@ -69,7 +83,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
                   oldPrice={`$${drink.oldPrice}`}
                   rating={drink.rating}
                   discount={drink.discount}
-                  onAddToCart={() => alert("Added to cart")}
+                  onAddToCart={() => handleAddToCart(drink._id)}
                 />
               ))}
             </div>

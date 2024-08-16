@@ -18,7 +18,7 @@ const Input: React.FC<InputProps> = ({ value, onChange, placeholder, name, type,
         placeholder={placeholder || "Buscar..."}
         value={value}
         onChange={onChange}
-        className={className ? className : "p-2 pl-4 pr-10 w-full rounded bg-white text-slate-800"}
+        className={className ? className : "p-2 pl-4 pr-10 w-full rounded bg-zinc-200 text-slate-800"}
         name={name}
         checked={checked}
       />

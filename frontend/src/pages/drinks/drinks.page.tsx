@@ -4,7 +4,6 @@ import { AppDispatch } from "../../store/config";
 import { fetchDrinks } from "../../store/actions/drinks.actions";
 import { selectDrinks, selectLoading, selectError } from "../../store/slices/drinks.slice";
 import DrinksSection from "./sections/drinks.section";
-import Footer from "../../components/footer.component";
 
 const Drinks: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -23,7 +22,6 @@ const Drinks: React.FC = () => {
       ) : (
         <DrinksSection drinks={drinks} error={error} />
       )}
-      <Footer />
     </div>
   );
 };

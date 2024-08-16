@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { loginAPI, logoutAPI, checkSessionStatusAPI } from '../api/session.api';
+import { showToastWithTimeout } from '../slices/toast.slice';
 
 export const login = createAsyncThunk(
   'session/login',
-  async (credentials: { email: string; password: string }) => {
+  async (credentials: { email: string; password: string }, { dispatch }) => {
     const response = await loginAPI(credentials);
+    dispatch(showToastWithTimeout('Has iniciado sesión correctamente'));
     return response.token;
   }
 );

@@ -7,6 +7,7 @@ import {
   deleteUserAPI
 } from '../api/users.api';
 import { IUser } from '../../interfaces/user.interface';
+import { showToastWithTimeout } from '../slices/toast.slice';
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
@@ -24,7 +25,8 @@ export const fetchUserById = createAsyncThunk(
 
 export const createUser = createAsyncThunk(
   'users/createUser',
-  async (user: Partial<IUser>) => {
+  async (user: Partial<IUser>, { dispatch }) => {
+    dispatch(showToastWithTimeout('Cuenta creada'));
     return await createUserAPI(user);
   }
 );

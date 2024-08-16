@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderSection from "./sections/header.section";
 import AboutSection from "./sections/about.section";
 import DrinksSection from "./sections/drinks.section";
@@ -7,7 +7,6 @@ import StepsSection from "./sections/steps.section";
 import img1 from "../../assets/drinks.png";
 import img2 from "../../assets/cart.png";
 import img3 from "../../assets/enjoy.png";
-import Footer from "../../components/footer.component";
 import { AppDispatch } from "../../store/config";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDrinks, selectError, selectLoading } from "../../store/slices/drinks.slice";
@@ -23,11 +22,14 @@ const Home: React.FC = () => {
   useEffect(() => {
     dispatch(fetchDrinks());
   }, [dispatch]);
+
   const aboutRef = useRef<HTMLDivElement>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const scrollToAbout = () => {
-    if (aboutRef.current) {
+    if (!isScrolling && aboutRef.current) {
       aboutRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => setIsScrolling(false), 1000); 
     }
   };
 
@@ -50,7 +52,6 @@ const Home: React.FC = () => {
       </div>
       <DrinksSection drinks={drinks} error={error} />
       <StepsSection steps={stepsData} />
-      <Footer />
       </div>
       )}
     </div>
