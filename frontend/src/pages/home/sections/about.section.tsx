@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import Text from "@components/text.component";
-import LinkButtonSolid from "@components/solidbutton.component";
+import Text from "@components/text";
+import LinkButtonSolid from "@components/solidbutton";
 
 const AboutSection = forwardRef<HTMLDivElement>((props, ref) => {
   return (

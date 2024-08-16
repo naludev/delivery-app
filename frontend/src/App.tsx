@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Nav from '@components/nav.component';
-import Toast from '@components/toast.component';
-import Footer from '@components/footer.component';
+import Nav from '@components/nav';
+import Toast from '@components/toast';
+import Footer from '@components/footer';
 import Home from '@pages/home/home.page';
 import Drinks from '@pages/drinks/drinks.page';
 import Contact from './pages/contact/contact.page';

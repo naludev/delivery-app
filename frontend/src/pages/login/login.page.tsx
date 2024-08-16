@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from '@hooks/session';
 import { selectError } from '@store/slices/session.slice';
 import { handleLogin, handleInputChange } from './utils';
-import Button from "@components/button.component";
-import Input from "@components/input.component";
-import Text from "@components/text.component";
-import LinkButtonOutline from "@components/outlinebutton.component";
+import Button from "@components/button";
+import Input from "@components/input";
+import Text from "@components/text";
+import LinkButtonOutline from "@components/outlinebutton";
 import useFormValidation from "@hooks/useFormValidation";
 
 const Login: React.FC = () => {

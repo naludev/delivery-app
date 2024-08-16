@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Text from "@components/text.component";
-import Card from "@components/card.component";
-import LinkButtonSolid from "@components/solidbutton.component";
+import Text from "@components/text";
+import Card from "@components/card";
+import LinkButtonSolid from "@components/solidbutton";
 import { DrinksProps } from "@interfaces/drink";
 import { ICartItem } from "@interfaces/cart";
 import { addToCart, fetchCartTotalQuantity } from "@store/actions/cart.actions";

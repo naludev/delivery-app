@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import Text from "@components/text.component";
-import Card from "@components/card.component";
-import Search from "@components/search.component";
+import Text from "@components/text";
+import Card from "@components/card";
+import Search from "@components/search";
 import Filters from "./filters.section";
 import { DrinksProps } from "@interfaces/drink";
 import { ICartItem } from "@interfaces/cart";

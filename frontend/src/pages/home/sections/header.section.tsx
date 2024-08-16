@@ -1,8 +1,8 @@
 import React from "react";
 import Logo from "@assets/instatragos.png";
-import LinkButtonSolid from "@components/solidbutton.component";
-import LinkButtonOutline from "@components/outlinebutton.component";
-import Text from "@components/text.component";
+import LinkButtonSolid from "@components/solidbutton";
+import LinkButtonOutline from "@components/outlinebutton";
+import Text from "@components/text";
 
 interface HeaderProps {
   scrollToAbout: () => void;
