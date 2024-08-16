@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '@hooks/session.hooks';
+import { useAppSelector, useAppDispatch } from '@hooks/session';
 import { hideToast, selectToast } from '@store/slices/toast.slice';
 
 const Toast: React.FC = () => {

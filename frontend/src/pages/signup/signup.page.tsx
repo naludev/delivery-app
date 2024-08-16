@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from '@hooks/session.hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/session';
 import { selectError } from '@store/slices/session.slice';
 import { createUser } from '@store/actions/users.actions';
 import { login } from '@store/actions/session.actions';

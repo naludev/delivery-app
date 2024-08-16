@@ -1,7 +1,7 @@
 // src/actions/cart.actions.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchCartAPI, addToCartAPI, removeFromCartAPI, updateCartQuantityAPI, fetchCartTotalQuantityAPI, clearCartAPI } from '@api/cart.api';
-import { ICartItem } from '@interfaces/cart.interface';
+import { ICartItem } from '@interfaces/cart';
 
 export const fetchCart = createAsyncThunk<ICartItem[]>(
   'cart/fetchCart',

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from '@hooks/session.hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/session';
 import { selectError } from '@store/slices/session.slice';
 import { handleLogin, handleInputChange } from './utils';
 import Button from "@components/button.component";
 import Input from "@components/input.component";
 import Text from "@components/text.component";
 import LinkButtonOutline from "@components/outlinebutton.component";
-import useFormValidation from "@hooks/useFormValidation.hooks";
+import useFormValidation from "@hooks/useFormValidation";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({

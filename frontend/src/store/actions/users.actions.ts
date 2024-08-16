@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchUsersAPI, fetchUserByIdAPI, createUserAPI, updateUserAPI, deleteUserAPI } from '@api/users.api';
-import { IUser } from '@interfaces/user.interface';
+import { IUser } from '@interfaces/user';
 import { showToastWithTimeout } from '@slices/toast.slice';
 
 export const fetchUsers = createAsyncThunk(

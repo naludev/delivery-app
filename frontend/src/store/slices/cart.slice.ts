@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../config';
-import { ICartItem } from '@interfaces/cart.interface';
+import { ICartItem } from '@interfaces/cart';
 import { fetchCart, addToCart, removeFromCart, fetchCartTotalQuantity, clearCart, updateCartQuantity } from '@actions/cart.actions';
 
 interface CartState {
