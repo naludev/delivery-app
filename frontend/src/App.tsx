@@ -8,6 +8,7 @@ import Contact from './pages/contact/contact.page';
 import Login from '@pages/login/login.page';
 import SignUp from '@pages/signup/signup.page';
 import Cart from '@pages/cart/cart.page';
+import Profile from '@pages/profile/profile.page';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/iniciar-sesion" element={<Login />} />
             <Route path="/registro" element={<SignUp />} />
             <Route path="/carrito" element={<Cart />} />
+            <Route path="/perfil" element={<Profile />} />
           </Routes>
           <Toast />
           <Footer />

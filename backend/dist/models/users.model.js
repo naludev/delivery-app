@@ -28,15 +28,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const cart_model_1 = require("./cart.model");
 const UserSchema = new mongoose_1.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     lastname: { type: String, required: true },
-    age: { type: Number, required: true },
+    adult: { type: Boolean, required: true },
+    cart: [cart_model_1.CartItemModel.schema],
 });
-// Encriptar la contraseña antes de guardar el usuario
 UserSchema.pre('save', async function (next) {
     if (!this.isModified('password'))
         return next();
@@ -45,7 +46,6 @@ UserSchema.pre('save', async function (next) {
     this.password = hash;
     next();
 });
-// Método para comparar la contraseña
 UserSchema.methods.comparePassword = async function (candidatePassword) {
     return bcryptjs_1.default.compare(candidatePassword, this.password);
 };

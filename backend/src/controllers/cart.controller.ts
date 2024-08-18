@@ -103,7 +103,6 @@ export const getCart = async (req: Request, res: Response) => {
         };
       }).filter(item => item !== null);
   
-      // Calcular el precio total del carrito
       const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
   
       res.status(200).json({ items: cartItems, totalPrice });

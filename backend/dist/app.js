@@ -30,24 +30,67 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const users_route_1 = __importDefault(require("./routes/users.route"));
 const session_routes_1 = __importDefault(require("./routes/session.routes"));
+const drinks_routes_1 = __importDefault(require("./routes/drinks.routes"));
+const cart_routes_1 = __importDefault(require("./routes/cart.routes"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const dotenv = __importStar(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 dotenv.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
-// Configuración de Swagger
+app.use((0, cors_1.default)());
 const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-            title: 'User API',
+            title: 'User and Drink API',
             version: '1.0.0',
-            description: 'API for managing users',
+            description: 'API for managing users and drinks',
         },
         servers: [
             {
                 url: `http://localhost:${PORT}/api`,
+            },
+        ],
+        components: {
+            schemas: {
+                User: {
+                    type: 'object',
+                    properties: {
+                        email: { type: 'string', example: 'user@example.com' },
+                        password: { type: 'string', example: 'password123' },
+                        username: { type: 'string', example: 'username' },
+                        name: { type: 'string', example: 'John' },
+                        lastname: { type: 'string', example: 'Doe' },
+                        adult: { type: 'boolean', example: true },
+                    },
+                    required: ['email', 'password', 'username', 'name', 'lastname', 'adult'],
+                },
+                Drink: {
+                    type: 'object',
+                    properties: {
+                        name: { type: 'string', example: 'Mojito' },
+                        description: { type: 'string', example: 'A refreshing cocktail' },
+                        rating: { type: 'integer', example: 4, minimum: 1, maximum: 5 },
+                        price: { type: 'number', example: 10.99 },
+                        discount: { type: 'number', example: 15 }, // porcentaje
+                        oldPrice: { type: 'number', example: 12.94 },
+                    },
+                    required: ['name', 'description', 'rating', 'price', 'discount', 'oldPrice'],
+                },
+            },
+            securitySchemes: {
+                BearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [
+            {
+                BearerAuth: [],
             },
         ],
     },
@@ -55,16 +98,15 @@ const swaggerOptions = {
 };
 const swaggerDocs = (0, swagger_jsdoc_1.default)(swaggerOptions);
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocs));
-// Conectar a MongoDB
-mongoose_1.default.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/yourdatabase')
+// Conectar a MongoDB Atlas
+mongoose_1.default.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
-// Middleware
 app.use(express_1.default.json());
-// Rutas
 app.use('/api', users_route_1.default);
 app.use('/api', session_routes_1.default);
-// Manejo de errores
+app.use('/api', drinks_routes_1.default);
+app.use('/api', cart_routes_1.default);
 app.use((req, res, next) => {
     res.status(404).json({ message: 'Not Found' });
 });

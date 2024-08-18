@@ -7,6 +7,7 @@ import { fetchCart, fetchCartTotalQuantity, removeFromCart, clearCart, updateCar
 import Text from "@components/text";
 import Button from "@components/button";
 import QuantityInput from "@components/inputqty";
+import Modal from "@components/modal";
 import DrinkImage from '@assets/trago.jpg';
 import Papelera from '@assets/papelera.png';
 
@@ -16,6 +17,7 @@ const Cart = () => {
   const loading = useSelector(selectCartLoading);
   const [editedQuantities, setEditedQuantities] = useState<{ [key: string]: number }>({});
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchCart());
@@ -108,13 +110,23 @@ const Cart = () => {
           {Array.isArray(cart.items) && cart.items.length > 0 && ((
             <div className="w-full max-w-4xl mt-5 flex flex-col items-end">
               <Text className="text-white font-bold text-lg" type="description">Total ${totalPrice.toFixed(2)}</Text>
-              <Button className="flex items-center justify-center rounded-md bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 mt-5 gap-1" onClick={handleClearCart}>
+              <Button className="gap-1 inline-flex h-12 items-center justify-center rounded bg-red-600 px-6 shadow-md outline-none transition duration-200 text-xs font-semibold uppercase tracking-wider text-white hover:shadow-lg focus:ring" onClick={() => setIsModalOpen(true)}>
                 <img className="w-4 invert" src={Papelera} alt="vaciar carrito" /> Vaciar carrito
               </Button>
             </div>
           ))}
         </>
       )}
+         <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={async () => {
+          await handleClearCart();
+          setIsModalOpen(false);
+        }}
+        title="vaciar carrito"
+        message="¿Estás seguro de que deseas vaciar el carrito?"
+      />
     </div>
   );
 };

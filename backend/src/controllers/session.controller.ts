@@ -23,7 +23,7 @@ export const login = async (req: Request, res: Response) => {
             expiresIn: '1h',
         });
 
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, userId: user._id });
     } catch (error) {
         return res.status(500).json({ message: 'Server error' });
     }

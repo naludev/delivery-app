@@ -5,22 +5,18 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": ".",  // Base del proyecto
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
@@ -31,7 +27,6 @@
       "@api/*": ["src/store/api/*"],
       "@actions/*": ["src/store/actions/*"],
       "@interfaces/*": ["src/interfaces/*"],
-      // Agrega más alias según tus necesidades
     }
   },
   "include": ["src"]

@@ -12,7 +12,7 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({ value, onChange, placeholder, name, type, checked, className }) => {
   return (
-    <div className="relative mb-4 w-full pt-2">
+    <div className="relative mb-4 w-full">
       <input
         type={type ? type : "text"}
         placeholder={placeholder || "Buscar..."}

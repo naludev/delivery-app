@@ -22,7 +22,6 @@ export default defineConfig({
       '@api': path.resolve(__dirname, './src/store/api'),
       '@actions': path.resolve(__dirname, './src/store/actions'),
       '@interfaces': path.resolve(__dirname, './src/interfaces')
-      // Agrega otros alias según necesites
     }
   }
 })

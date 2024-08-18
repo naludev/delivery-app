@@ -52,6 +52,7 @@ const Home: React.FC = () => {
       </div>
       <DrinksSection drinks={drinks} error={error} />
       <StepsSection steps={stepsData} />
+      
       </div>
       )}
     </div>

@@ -63,4 +63,17 @@ router.post('/login', session_controller_1.login);
  *         description: Successfully logged out
  */
 router.post('/logout', session_controller_1.isAuthenticated, session_controller_1.logout);
+/**
+ * @swagger
+ * /session/status:
+ *   get:
+ *     summary: Check if the user is logged in
+ *     tags: [Sessions]
+ *     responses:
+ *       200:
+ *         description: User is logged in
+ *       401:
+ *         description: User is not logged in
+ */
+router.get('/session/status', session_controller_1.isAuthenticated, session_controller_1.checkSessionStatus);
 exports.default = router;

@@ -6,6 +6,7 @@ export const login = createAsyncThunk(
   'session/login',
   async (credentials: { email: string; password: string }, { dispatch }) => {
     const response = await loginAPI(credentials);
+    localStorage.setItem('userId', response.userId);
     dispatch(showToastWithTimeout('Has iniciado sesión correctamente'));
     return response.token;
   }

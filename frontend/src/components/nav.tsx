@@ -89,7 +89,10 @@ const Nav = () => {
           {isUserMenuOpen && (
             <div className="absolute right-0 mt-12 w-48 bg-gray-800 rounded-lg shadow-lg z-30">
               {isLoggedIn ? (
+                <>
+                 <button className="block px-4 py-2 text-white hover:bg-gray-700 w-full text-left" onClick={() => { navigate('/perfil'); setIsUserMenuOpen(false); }}>Perfil</button>
                 <button className="block px-4 py-2 text-white hover:bg-gray-700 w-full text-left" onClick={() => { handleLogout(); setIsUserMenuOpen(false); }}>Salir</button>
+                </>
               ) : (
                 <>
                   <Link to="/iniciar-sesion" className="block px-4 py-2 text-white hover:bg-gray-700" onClick={() => setIsUserMenuOpen(false)}>Iniciar sesión</Link>
@@ -136,6 +139,7 @@ const Nav = () => {
           )}
             {isLoggedIn ? (
               <li>
+                <button className="bg-teal-accent-400 rounded-full px-3 py-px text-md uppercase font-bold tracking-wider text-white" onClick={() => { navigate("/perfil"); setIsMenuOpen(false)}}>Salir</button>
                 <button className="bg-teal-accent-400 rounded-full px-3 py-px text-md uppercase font-bold tracking-wider text-white" onClick={handleLogout}>Salir</button>
               </li>
             ) : (

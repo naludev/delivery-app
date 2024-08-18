@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import userRoutes from './routes/users.route';
 import sessionRoutes from './routes/session.routes';
 import drinksRoutes from './routes/drinks.routes';
-import cartRoutes from './routes/cart.routes'
+import cartRoutes from './routes/cart.routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import * as dotenv from 'dotenv';
@@ -75,7 +75,8 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/yourdatabase')
+// Conectar a MongoDB Atlas
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -83,8 +84,8 @@ app.use(express.json());
 
 app.use('/api', userRoutes);
 app.use('/api', sessionRoutes);
-app.use('/api', drinksRoutes)
-app.use('/api', cartRoutes)
+app.use('/api', drinksRoutes);
+app.use('/api', cartRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Not Found' });

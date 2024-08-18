@@ -27,7 +27,8 @@ export const createUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'users/updateUser',
-  async ({ id, user }: { id: string, user: Partial<IUser> }) => {
+  async ({ id, user }: { id: string, user: Partial<IUser> }, { dispatch }) => {
+    dispatch(showToastWithTimeout('Datos actualizados'));
     return await updateUserAPI(id, user);
   }
 );

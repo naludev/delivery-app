@@ -50,6 +50,7 @@ const Contact: React.FC = () => {
                 Enviar
               </Button>
             </form>
+            
           </div>
         </div>
 
