@@ -39,6 +39,12 @@ const cors_1 = __importDefault(require("cors"));
 dotenv.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use((0, cors_1.default)());
 const swaggerOptions = {
     swaggerDefinition: {
@@ -50,7 +56,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${PORT}/api`,
+                url: `https://delivery-app-6z1z.onrender.com/api`,
             },
         ],
         components: {
