@@ -22,9 +22,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
-app.use(cors());  
-
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -35,7 +32,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `https://delivery-app-6z1z.onrender.com/api`,
+        url: `https://delivery-app-ocim.onrender.com/`,
       },
     ],
     components: {

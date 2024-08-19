@@ -45,7 +45,6 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
 app.use((0, cors_1.default)(corsOptions));
-app.use((0, cors_1.default)());
 const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
@@ -56,7 +55,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `https://delivery-app-6z1z.onrender.com/api`,
+                url: `https://delivery-app-ocim.onrender.com/`,
             },
         ],
         components: {
