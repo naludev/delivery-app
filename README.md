@@ -1,4 +1,4 @@
-# Insta TragosInsta Tragos
+# Insta Tragos
 **Insta Tragos** is a web platform designed to offer a drink delivery service, allowing users to order alcoholic beverages from the comfort of their homes. This project was developed as part of my portfolio, showcasing my skills in full-stack development.
 
 ## Description
