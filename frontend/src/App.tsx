@@ -4,7 +4,6 @@ import Toast from '@components/toast';
 import Footer from '@components/footer';
 import Home from '@pages/home/home.page';
 import Drinks from '@pages/drinks/drinks.page';
-import Contact from './pages/contact/contact.page';
 import Login from '@pages/login/login.page';
 import SignUp from '@pages/signup/signup.page';
 import Cart from '@pages/cart/cart.page';

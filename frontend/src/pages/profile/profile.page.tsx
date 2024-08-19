@@ -4,12 +4,11 @@ import Button from "@components/button";
 import Input from "@components/input";
 import Text from "@components/text";
 import { fetchUserById, updateUser } from "@actions/users.actions";
-import { selectSelectedUser, selectLoading } from "@slices/users.slice";
+import { selectSelectedUser } from "@slices/users.slice";
 
 const Profile: React.FC = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectSelectedUser);
-  const loading = useSelector(selectLoading);
 
   const [formData, setFormData] = useState({
     name: "",

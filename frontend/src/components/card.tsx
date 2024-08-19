@@ -15,7 +15,6 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  imageUrl,
   title,
   description,
   price,

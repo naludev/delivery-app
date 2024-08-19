@@ -8,7 +8,7 @@ interface QuantityInputProps {
   onChange: (value: number) => void;
 }
 
-const QuantityInput: FC<QuantityInputProps> = ({ value, onIncrement, onDecrement, onChange }) => {
+const QuantityInput: FC<QuantityInputProps> = ({ value, onIncrement, onDecrement }) => {
   return (
     <div className="flex flex-row items-center gap-2">
       <button onClick={onDecrement} className="bg-gray-600 text-white p-2 rounded">
