@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import Text from "@components/text";
 import LinkButtonSolid from "@components/solidbutton";
-
+// @ts-ignore
 const AboutSection = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ref} className="w-full md:w-1/2 flex flex-col">
