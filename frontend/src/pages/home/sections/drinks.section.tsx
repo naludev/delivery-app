@@ -24,7 +24,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   };
 
   return (
-    <div className="bg-gray-900">
+    <div>
       {error && <p className="text-red-500">{error}</p>}
       {drinks.length === 0 ? (
         <p className="text-red-500">No hay tragos disponibles</p>

@@ -6,7 +6,7 @@ import Text from '@components/text';
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col items-center self-center bg-slate-950 bg-opacity-60 p-2">
+    <div className="w-full flex flex-col items-center self-center p-2">
       <div className="w-full flex justify-center items-center p-3">
         <img className="object-cover w-10" src={Logo} alt="Logo" />
         <div className="flex items-center">

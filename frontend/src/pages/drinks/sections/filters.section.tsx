@@ -12,7 +12,7 @@ const Filters: React.FC<FiltersProps> = ({ selectedFilters, toggleFilter }) => {
   ];
 
   return (
-    <div className="flex flex-col p-4 h-auto bg-transparent md:bg-slate-800">
+    <div className="flex flex-col p-4 h-auto bg-transparent">
       <Text className="text-white text-center normal-case" type="subtitle">
         Filtrar búsqueda
       </Text>

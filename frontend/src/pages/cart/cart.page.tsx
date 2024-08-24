@@ -78,7 +78,7 @@ const Cart = () => {
       ) : (
         <>
           <Text className="text-center w-full max-w-4xl" type="title" variant="secondary">Carrito</Text>
-          <Text className="text-center w-full max-w-4xl mt-2" type="description" variant="secondary">Completa la compra de tus tragos favoritos</Text>
+          <Text className="text-center w-full max-w-4xl" type="description" variant="secondary">Completa la compra de tus tragos favoritos</Text>
           <br />
           <ul className="w-full max-w-4xl">
             {Array.isArray(cart.items) && cart.items.length > 0 ? (
@@ -104,7 +104,7 @@ const Cart = () => {
                 </li>
               ))
             ) : (
-              <Text className="text-white font-bold mt-5 text-center" type="description">Agrega items al carrito</Text>
+              <Text className="text-white font-bold mt-5 text-center" type="description">Agrega tragos al carrito</Text>
             )}
           </ul>
           {Array.isArray(cart.items) && cart.items.length > 0 && ((

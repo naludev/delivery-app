@@ -37,11 +37,11 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-900 font-[sans-serif]">
+    <div className="font-[sans-serif]">
       <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
         <div className="max-w-md w-full">
           <div className="p-8 rounded bg-slate-800 shadow">
-            <Text className="text-center w-full max-w-full" type="subtitle" variant="secondary">Iniciar sesión</Text>
+            <Text className="text-center w-full max-w-full" type="title" variant="secondary">Iniciar sesión</Text>
             <Text className="px-3 text-white text-center max-w-xs md:max-w-xl" type="description">Inicia sesión para poder continuar con tu compra</Text>
             <form className="mt-8" onSubmit={onSubmit}>
             <div className="relative flex items-start flex-col">
@@ -54,7 +54,7 @@ const Login: React.FC = () => {
                 <Input value={formData.password} onChange={(e) => handleInputChange(e, setFormData)} name="password" type="password" placeholder="Contraseña" />
                 {errors.password && <p className="text-red-500 mt-1">{errors.password}</p>}
               </div>
-              <LinkButtonOutline className="w-full justify-end text-[10px] underline text-blue-400" label="olvide mi contraseña" onClick={() => navigate('/resetear-contraseña')} />
+              <LinkButtonOutline className="w-full justify-end text-[10px] underline text-blue-400" label="olvidé mi contraseña" onClick={() => navigate('/resetear-contraseña')} />
               {(error || reduxError) && <p className="text-red-500 mt-2">{error}</p>}
               <div className="!mt-8">
                 <Button 

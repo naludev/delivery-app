@@ -60,7 +60,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   return (
     <div className="flex flex-col md:flex-row">
       <Filters selectedFilters={selectedFilters} toggleFilter={toggleFilter} />
-      <div className="flex-1 bg-gray-900 p-5 min-h-[100vw]">
+      <div className="flex-1 p-5 min-h-[100vw]">
         <Text className="text-center w-full max-w-full" type="title" variant="secondary">Carta de tragos</Text>
         <Text className="text-center w-full max-w-full mt-2" type="description" variant="secondary">Algunos de los más pedidos y mejores catalogados</Text>
         <div className="relative mb-4 w-full">

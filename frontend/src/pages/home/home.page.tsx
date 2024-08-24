@@ -13,7 +13,6 @@ import img3 from "@assets/enjoy.png";
 import { useDispatch, useSelector } from "react-redux";
 
 const Home: React.FC = () => {
-
   const dispatch: AppDispatch = useDispatch();
   const drinks = useSelector(selectDrinks);
   const loading = useSelector(selectLoading);
@@ -28,8 +27,9 @@ const Home: React.FC = () => {
 
   const scrollToAbout = () => {
     if (!isScrolling && aboutRef.current) {
+      setIsScrolling(true);
       aboutRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(() => setIsScrolling(false), 1000); 
+      setTimeout(() => setIsScrolling(false), 1000);
     }
   };
 
@@ -41,19 +41,19 @@ const Home: React.FC = () => {
 
   return (
     <div>
-       {loading ? (
+      {loading ? (
         <p>Loading...</p>
       ) : (
         <div>
-      <HeaderSection scrollToAbout={scrollToAbout} />
-      <div ref={aboutRef} className="flex flex-col md:flex-row">
-        <AboutSection />
-        <OfferSection />
-      </div>
-      <DrinksSection drinks={drinks} error={error} />
-      <StepsSection steps={stepsData} />
-      
-      </div>
+        {/* @ts-ignore */}
+          <HeaderSection scrollToAbout={scrollToAbout} />
+          <div ref={aboutRef} className="flex flex-col md:flex-row">
+            <AboutSection />
+            <OfferSection />
+          </div>
+          <DrinksSection drinks={drinks} error={error} />
+          <StepsSection steps={stepsData} />
+        </div>
       )}
     </div>
   );

@@ -48,11 +48,12 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-900 font-[sans-serif]">
+    <div className="font-[sans-serif]">
       <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
         <div className="max-w-md w-full">
           <div className="p-8 rounded bg-slate-800 shadow">
-            <Text className="text-center w-full max-w-full" type="subtitle" variant="secondary">Registrarse</Text>
+            <Text className="text-center w-full max-w-full" type="title" variant="secondary">Registrarse</Text>
+            <Text className="px-3 text-white text-center max-w-xs md:max-w-xl" type="description">Unite al club para brindar de la mejor manera</Text>
             <form className="mt-8" onSubmit={onSubmit}>
               <div className="relative flex items-start flex-col">
                 <Text className="px-3 text-white text-center max-w-xs md:max-w-xl" type="description">Correo electrónico</Text>

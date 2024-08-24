@@ -16,7 +16,7 @@ const StepCard: React.FC<Step> = ({ title, description, img }) => (
 
 const StepsSection = forwardRef<HTMLDivElement, StepsProps>(({ steps }, ref) => {
   return (
-    <div ref={ref} className="w-full flex flex-col items-center self-center bg-slate-800 bg-opacity-60 p-10">
+    <div ref={ref} className="w-full flex flex-col items-center self-center p-10">
       <div className="p-4 flex flex-col md:flex-row items-center">
         {steps.map((step, index) => (
           <StepCard key={index} title={`Paso ${index + 1}`} description={step.description} img={step.img} />

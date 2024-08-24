@@ -70,8 +70,13 @@ const Nav = () => {
   };
 
   return (
-    <nav className="text-white">
-      <div className="bg-slate-950 flex flex-wrap justify-between items-center px-2 w-full">
+    <nav className="text-white" style={{ 
+   
+      backgroundImage: 'radial-gradient(#000000 0.5px, #111827 0.5px)', 
+      backgroundSize: '10px 10px', 
+      zIndex: 5
+    }}>
+      <div className="flex flex-wrap justify-between items-center px-2 w-full">
         <img className="object-cover w-20 h-full" src={Logo} alt="Logo" />
         <div className="hidden md:flex space-x-4 mr-2">
           {navItems.map(({ title, url }) => (
@@ -114,7 +119,7 @@ const Nav = () => {
           )}
         </button>
       </div>
-      <div className={`fixed inset-0 bg-gray-900 z-50 md:hidden transition-transform transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed inset-0 z-50 md:hidden transition-transform transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`} style={{backgroundImage: 'radial-gradient(#000000 0.5px, #111827 0.5px)', backgroundSize: '10px 10px'}}>
         <div className="flex flex-col items-center mt-20">
           <button className="absolute top-4 right-4 text-white" onClick={toggleMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

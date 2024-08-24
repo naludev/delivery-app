@@ -4,11 +4,7 @@ import LinkButtonSolid from "@components/solidbutton";
 import LinkButtonOutline from "@components/outlinebutton";
 import Text from "@components/text";
 
-interface HeaderProps {
-  scrollToAbout: () => void;
-}
-
-const HeaderSection: React.FC<HeaderProps> = ({ scrollToAbout }) => {
+const HeaderSection: React.FC = () => {
   return (
     <header className="relative bg-cover bg-center" style={{ backgroundImage: "url('https://images.pexels.com/photos/14866145/pexels-photo-14866145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}>
       <div className="relative mx-auto flex flex-col md:max-w-screen-xl md:flex-row">
@@ -17,7 +13,7 @@ const HeaderSection: React.FC<HeaderProps> = ({ scrollToAbout }) => {
             <div className="mb-6 p-4 flex flex-col items-center">
               <img className="object-cover w-40 h-full mb-4" src={Logo} alt="product image" />
               <div className="flex flex-col items-center">
-                <Text className="px-3 uppercase text-white text-center" type="subtitle">TUS TRAGOS AL INSTANTE</Text>
+                <Text className="px-3 text-white text-center" type="title">Tus tragos al instante</Text>
                 <Text className="px-3 text-white text-center max-w-xs md:max-w-xl" type="description">
                   Insta Tragos UY te lleva tus tragos favoritos al instante, con una selección exclusiva y entrega rápida para disfrutar donde quieras.
                 </Text>
@@ -26,7 +22,7 @@ const HeaderSection: React.FC<HeaderProps> = ({ scrollToAbout }) => {
             </div>
             <div className="flex items-center gap-5">
               <LinkButtonSolid label="Ver tragos" href="/tragos" />
-              <LinkButtonOutline className="text-white" label="Acerca de" onClick={scrollToAbout} />
+              <LinkButtonOutline className="text-white" label="Acerca de" />
             </div>
           </div>
         </div>
