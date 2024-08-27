@@ -99,7 +99,8 @@ export const getCart = async (req: Request, res: Response) => {
           name: populatedItem.drink.name,
           price: totalPrice,
           quantity: populatedItem.quantity,
-          description: populatedItem.drink.description
+          description: populatedItem.drink.description,
+          image: populatedItem.drink.image
         };
       }).filter(item => item !== null);
   
@@ -167,10 +168,8 @@ export const getCart = async (req: Request, res: Response) => {
       const itemIndex = user.cart.findIndex(item => item.drinkId.equals(objectId));
       if (itemIndex > -1) {
         if (quantity === 0) {
-          // Si la cantidad es 0, eliminar el producto del carrito
           user.cart.splice(itemIndex, 1);
         } else {
-          // Si la cantidad es mayor que 0, actualizar la cantidad
           user.cart[itemIndex].quantity = quantity;
         }
       } else {
