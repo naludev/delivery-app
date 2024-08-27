@@ -23,6 +23,8 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
     }
   };
 
+  const limitedDrinks = drinks.slice(0, 3);
+
   return (
     <div>
       {error && <p className="text-red-500">{error}</p>}
@@ -37,7 +39,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
             Algunos de los más pedidos y mejores catalogados
           </Text>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center px-2 py-5">
-            {drinks.map((drink) => (
+            {limitedDrinks.map((drink) => (
               <Card
                 key={drink._id}
                 imageUrl={drink.image}

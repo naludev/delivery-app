@@ -1,41 +1,31 @@
 import React from "react";
-import Text from "@components/text";
 import Button from "@components/button";
-import { Filter, FiltersProps } from "../utils";
+import { FiltersProps, Filter, FilterType } from "../utils";
 
-const Filters: React.FC<FiltersProps> = ({ selectedFilters, toggleFilter }) => {
+const Filters: React.FC<FiltersProps & { drinks: any[] }> = ({ selectedFilters, toggleFilter, drinks }) => {
+  const uniqueRatings = Array.from(new Set(drinks.map(drink => drink.rating)));
+  const uniqueDiscounts = Array.from(new Set(drinks.map(drink => drink.discount)));
+
   const filters: Filter[] = [
-    { label: "Descuento 39%", type: "discount" },
-    { label: "Descuento 20%", type: "discount" },
-    { label: "Rating 5", type: "rating" },
-    { label: "Rating 4+", type: "rating" },
+    ...uniqueDiscounts.map(discount => ({
+      label: `Descuento ${discount}%`,
+      type: "discount" as FilterType,
+    })),
+    ...uniqueRatings.map(rating => ({
+      label: `Rating ${rating}`,
+      type: "rating" as FilterType,
+    })),
   ];
 
   return (
     <div className="flex flex-col p-4 h-auto bg-transparent">
-      <Text className="text-white text-center normal-case" type="subtitle">
-        Filtrar búsqueda
-      </Text>
       {filters.map((filter) => {
         const isSelected = selectedFilters.some((f) => f.label === filter.label);
         return (
-          <div
-            key={filter.label}
-            className="flex items-center justify-between mb-2"
-          >
-            <Button
-              onClick={() => toggleFilter(filter)}
-              className={`${isSelected ? "bg-blue-500 text-white" : "bg-slate-500"}`}
-            >
-              {filter.label}
-            </Button>
+          <div key={filter.label} className="flex items-center justify-between mb-2">
+            <Button onClick={() => toggleFilter(filter)} className={`${isSelected ? "bg-blue-500 text-white" : "bg-slate-500"}`}>{filter.label}</Button>
             {isSelected && (
-              <Button
-                onClick={() => toggleFilter(filter)}
-                className="text-white shadow-none bg-transparent hover:bg-none hover:shadow-none focus:ring-0"
-              >
-                &#10005;
-              </Button>
+              <Button onClick={() => toggleFilter(filter)} className="text-white shadow-none bg-transparent hover:bg-none hover:shadow-none focus:ring-0">&#10005;</Button>
             )}
           </div>
         );

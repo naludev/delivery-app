@@ -75,7 +75,7 @@ interface PopulatedCartItem extends Omit<ICartItem, 'drinkId'> {
 export const getCart = async (req: Request, res: Response) => {
     try {
       const userId = (req as any).user.id;
-      const user = await UserModel.findById(userId).populate('cart.drinkId', 'name price description');
+      const user = await UserModel.findById(userId).populate('cart.drinkId', 'name price description image');
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -92,7 +92,6 @@ export const getCart = async (req: Request, res: Response) => {
         } as PopulatedCartItem;
   
         const totalPrice = populatedItem.drink.price * populatedItem.quantity;
-  
         return {
           _id: populatedItem._id,
           drinkId: populatedItem.drink._id,
@@ -100,8 +99,9 @@ export const getCart = async (req: Request, res: Response) => {
           price: totalPrice,
           quantity: populatedItem.quantity,
           description: populatedItem.drink.description,
-          image: `data:${populatedItem.drink.image.contentType};base64,${populatedItem.drink.image.data.toString('base64')}`
+          image: populatedItem.drink.image?.data ? `data:${populatedItem.drink.image.contentType};base64,${populatedItem.drink.image.data.toString('base64')}` : null
         };
+        
       }).filter(item => item !== null);
   
       const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);

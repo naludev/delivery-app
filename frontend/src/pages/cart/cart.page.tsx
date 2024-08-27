@@ -54,8 +54,6 @@ const Cart = () => {
       await dispatch(updateCartQuantity({ drinkId, quantity }));
       dispatch(fetchCartTotalQuantity());
       dispatch(fetchCart());
-    } else {
-      alert("Quantity must be at least 1");
     }
   };
 
@@ -66,8 +64,6 @@ const Cart = () => {
   const handleDecrement = (drinkId: string, quantity: number) => {
     if (quantity > 1) {
       handleQuantityChange(drinkId, quantity - 1);
-    } else {
-      alert("Quantity must be at least 1");
     }
   };
 
@@ -83,21 +79,16 @@ const Cart = () => {
           <ul className="w-full max-w-4xl">
             {Array.isArray(cart.items) && cart.items.length > 0 ? (
               cart.items.map((item: any) => (
-                <li key={item._id} className="px-12 py-8 flex flex-col md:flex-row justify-between bg-slate-800 rounded items-center mb-4">
+                <li key={item._id} className="flex flex-col md:flex-row justify-between bg-slate-800 rounded items-center mb-4">
                   <div className="flex flex-row gap-5 w-full">
-                    <img className="h-28 w-28 hidden md:block" src={DrinkImage} alt="trago" />
-                    <div className="flex flex-col text-left [text-align-last:start]">
+                    <img className="h-52 w-52 hidden md:block" src={item.image} alt="trago" />
+                    <div className="flex flex-col text-left [text-align-last:start] self-center">
                       <Text className="w-full" type="title" variant="secondary">{item.name}</Text>
                       <Text className="w-full mt-2" type="description" variant="secondary">{item.description}</Text>
                     </div>
                   </div>
-                  <div className="flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">
-                    <QuantityInput
-                      value={editedQuantities[item.drinkId] || item.quantity}
-                      onIncrement={() => handleIncrement(item.drinkId, editedQuantities[item.drinkId] || item.quantity)}
-                      onDecrement={() => handleDecrement(item.drinkId, editedQuantities[item.drinkId] || item.quantity)}
-                      onChange={(value) => handleQuantityChange(item.drinkId, value)}
-                    />
+                  <div className="flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0 p-12">
+                    <QuantityInput value={editedQuantities[item.drinkId] || item.quantity} onIncrement={() => handleIncrement(item.drinkId, editedQuantities[item.drinkId] || item.quantity)} onDecrement={() => handleDecrement(item.drinkId, editedQuantities[item.drinkId] || item.quantity)} onChange={(value) => handleQuantityChange(item.drinkId, value)} />
                     <Text className="text-white font-bold" type="description">${item.price}</Text>
                     <img className="w-5 invert cursor-pointer" src={Papelera} alt="vaciar carrito" onClick={() => handleRemoveFromCart(item.drinkId)} />
                   </div>
@@ -117,16 +108,7 @@ const Cart = () => {
           ))}
         </>
       )}
-         <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onConfirm={async () => {
-          await handleClearCart();
-          setIsModalOpen(false);
-        }}
-        title="vaciar carrito"
-        message="¿Estás seguro de que deseas vaciar el carrito?"
-      />
+         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onConfirm={async () => { await handleClearCart(); setIsModalOpen(false); }} title="vaciar carrito" message="¿Estás seguro de que deseas vaciar el carrito?" />
     </div>
   );
 };

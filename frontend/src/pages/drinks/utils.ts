@@ -1,9 +1,12 @@
+// utils.ts
+export type FilterType = "rating" | "discount";
+
 export interface Filter {
-    label: string;
-    type: "discount" | "rating";
-  }
+  label: string;
+  type: FilterType;
+}
 
 export interface FiltersProps {
-    selectedFilters: Filter[];
-    toggleFilter: (filter: Filter) => void;
-  }
+  selectedFilters: Filter[];
+  toggleFilter: (filter: Filter) => void;
+}
