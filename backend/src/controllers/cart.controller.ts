@@ -100,7 +100,7 @@ export const getCart = async (req: Request, res: Response) => {
           price: totalPrice,
           quantity: populatedItem.quantity,
           description: populatedItem.drink.description,
-          image: populatedItem.drink.image
+          image: populatedItem.drink.image?.data ? `data:${populatedItem.drink.image.contentType};base64,${populatedItem.drink.image.data.toString('base64')}` : null
         };
       }).filter(item => item !== null);
   
