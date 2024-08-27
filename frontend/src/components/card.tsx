@@ -15,6 +15,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
+  imageUrl,
   title,
   description,
   price,
@@ -26,7 +27,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className="relative w-full max-w-xs flex-col overflow-hidden bg-zinc-200 shadow-md flex justify-between">
       <a className="relative flex h-60 overflow-hidden" href="#">
-        <img className="object-cover w-full h-full" src={Trago} alt="product image" />
+        <img className="object-cover w-full h-full" src={imageUrl} alt="product image" />
         {discount && (
           <span className="absolute top-0 left-0 m-2 rounded-full bg-red-600 px-2 text-center text-sm font-bold text-white">
             {discount}%

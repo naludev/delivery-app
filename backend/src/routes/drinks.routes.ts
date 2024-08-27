@@ -6,6 +6,7 @@ import {
   updateDrinkById,
   removeDrinkById
 } from '../controllers/drinks.controller';
+import multer from 'multer';
 
 const router = express.Router();
 
@@ -18,16 +19,41 @@ const router = express.Router();
  *     requestBody:
  *       required: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
- *             $ref: '#/components/schemas/Drink'
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Name of the drink
+ *               description:
+ *                 type: string
+ *                 description: Description of the drink
+ *               rating:
+ *                 type: number
+ *                 description: Rating of the drink (1-5)
+ *               price:
+ *                 type: number
+ *                 description: Price of the drink
+ *               discount:
+ *                 type: number
+ *                 description: Discount percentage for the drink
+ *               oldPrice:
+ *                 type: number
+ *                 description: Old price of the drink
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *                 description: Image of the drink
  *     responses:
  *       201:
  *         description: Drink created successfully
  *       400:
  *         description: Bad request
  */
-router.post('/drinks', createDrink);
+const storage = multer.memoryStorage(); // Usar memoria para almacenar la imagen temporalmente como Buffer
+const upload = multer({ storage });
+router.post('/drinks', upload.single('image'), createDrink);
 
 /**
  * @swagger

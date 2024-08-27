@@ -6,8 +6,9 @@ const DrinkSchema: Schema = new Schema({
   description: { type: String, required: true },
   rating: { type: Number, required: true, min: 1, max: 5 },
   price: { type: Number, required: true },
-  discount: { type: Number, required: true },
-  oldPrice: { type: Number, required: true },
+  discount: { type: Number },
+  oldPrice: { type: Number},
+  image: { data: Buffer, contentType: String },  
 });
 
 DrinkSchema.pre<IDrink>('save', function (next) {

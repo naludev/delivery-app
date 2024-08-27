@@ -7,4 +7,8 @@ export interface IDrink extends Document {
   price: number;
   discount: number;
   oldPrice: number;
+  image: {
+    data: Buffer;
+    contentType: string;
+  };
 }
