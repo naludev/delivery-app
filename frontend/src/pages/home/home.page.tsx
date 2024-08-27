@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import HeaderSection from "./sections/header.section";
 import AboutSection from "./sections/about.section";
 import DrinksSection from "./sections/drinks.section";
@@ -22,17 +22,6 @@ const Home: React.FC = () => {
     dispatch(fetchDrinks());
   }, [dispatch]);
 
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  const scrollToAbout = () => {
-    if (!isScrolling && aboutRef.current) {
-      setIsScrolling(true);
-      aboutRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(() => setIsScrolling(false), 1000);
-    }
-  };
-
   const stepsData = [
     { title: "Paso 1", description: "Elige tus tragos de preferencia de nuestra amplia variedad de opciones", img: img1 },
     { title: "Paso 2", description: "Agrégalos a tu carrito y revisa los detalles de tu pedido", img: img2 },
@@ -46,13 +35,10 @@ const Home: React.FC = () => {
       ) : (
         <div>
         {/* @ts-ignore */}
-          <HeaderSection scrollToAbout={scrollToAbout} />
-          <div ref={aboutRef} className="flex flex-col md:flex-row">
-            <AboutSection />
-            <OfferSection />
-          </div>
-          <DrinksSection drinks={drinks} error={error} />
+          <HeaderSection />
           <StepsSection steps={stepsData} />
+          <OfferSection />
+          <DrinksSection drinks={drinks} error={error} />
         </div>
       )}
     </div>

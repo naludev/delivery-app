@@ -22,7 +22,7 @@ const HeaderSection: React.FC = () => {
             </div>
             <div className="flex items-center gap-5">
               <LinkButtonSolid label="Ver tragos" href="/tragos" />
-              <LinkButtonOutline className="text-white" label="Acerca de" />
+              <LinkButtonOutline className="text-white" label="Acerca de" href="/acerca" />
             </div>
           </div>
         </div>

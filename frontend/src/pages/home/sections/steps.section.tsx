@@ -17,6 +17,8 @@ const StepCard: React.FC<Step> = ({ title, description, img }) => (
 const StepsSection = forwardRef<HTMLDivElement, StepsProps>(({ steps }, ref) => {
   return (
     <div ref={ref} className="w-full flex flex-col items-center self-center p-10">
+      <Text className="px-3 text-center font-bold text-white" type="title" variant="secondary">¡Así de fácil es disfrutar de tus tragos favoritos!</Text>
+      <Text className="text-center text-white mt-2 mb-6">Sigue estos sencillos pasos y tu pedido estará en camino en un abrir y cerrar de ojos</Text>
       <div className="p-4 flex flex-col md:flex-row items-center">
         {steps.map((step, index) => (
           <StepCard key={index} title={`Paso ${index + 1}`} description={step.description} img={step.img} />
