@@ -12,8 +12,9 @@ const OfferSection: React.FC = () => {
           <div className="flex-1 flex items-center justify-center md:justify-start">
             <img className="object-cover w-2/5 h-40 md:h-48 shadow-lg" src={HomeDrink} alt="Product" />
           </div>
-          <div className="flex-1 flex flex-col items-center md:items-start p-6">
-            <Text className="text-white text-center md:text-left" type="title" variant="primary">¡Celebra con Insta Tragos! <br /> Aprovecha nuestras ofertas exclusivas <br /> en tragos seleccionados</Text>
+          <div className="flex-1 flex flex-col items-center md:items-start md:p-6">
+            <Text className="text-white text-center md:text-left" type="title" variant="primary">¡Celebra con Insta Tragos!</Text>
+            <Text className="text-white text-center md:text-left" type="subtitle" variant="primary">Aprovecha nuestras ofertas exclusivas en tragos seleccionados</Text>
             <Text className="text-white text-center md:text-left">No te pierdas las mejores promociones y los tragos más sabrosos de la temporada.</Text>
             <LinkButtonSolid className="self-end" label="Explorar Ofertas" href="/tragos" />
           </div>

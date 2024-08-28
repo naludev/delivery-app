@@ -54,12 +54,12 @@ const Profile: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-1 flex justify-center items-center p-8 lg:p-12 lg:items-start">
-        <div className="max-w-lg">
+        <div>
           <div className="text-center">
           <Text type="title" variant="secondary">Perfil</Text>
           <Text type="description" variant="secondary">Actualiza tus datos</Text>
           </div>
-          <form className="mt-8 bg-slate-800 rounded-lg p-6 shadow-md space-y-4 w-[50vw]">
+          <form className="mt-8 bg-slate-800 rounded-lg p-6 shadow-md space-y-4 w-[90vw] md:w-[80vw] lg:w-[50vw]">
             <Text type="description" variant="secondary">Nombre</Text>
             <Input name="name" value={formData.name} onChange={handleInputChange} placeholder="Nombre" />
 
