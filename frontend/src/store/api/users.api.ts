@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IUser } from '@interfaces/user';
 
-const API_URL = "http://localhost:3000/api/users";
+const API_URL = "https://delivery-app-ocim.onrender.com/api/users";
 
 export const fetchUsersAPI = async (): Promise<IUser[]> => {
   const response = await axios.get<IUser[]>(API_URL);

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { ICartItem } from '@interfaces/cart';
 
-const API_URL = "http://localhost:3000/api/cart";
+const API_URL = "https://delivery-app-ocim.onrender.com/api/cart";
 
 export const fetchCartAPI = async (): Promise<ICartItem[]> => {
   const response = await axios.get<ICartItem[]>(`${API_URL}`, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`} });
