@@ -3,7 +3,7 @@ import Text from "@components/text";
 import Rating from "@components/rating";
 import { selectToken } from "@store/slices/session.slice";
 import { RootState } from "@store/config";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 interface CardProps {
   imageUrl?: string;
@@ -28,7 +28,6 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const token = useSelector((state: RootState) => selectToken(state));
   const isLoggedIn = !!token;
-  const navigate = useNavigate();
   return (
     <div className="relative w-full max-w-xs flex-col overflow-hidden bg-zinc-200 shadow-md flex justify-between">
       <a className="relative flex h-60 overflow-hidden" href="#">
