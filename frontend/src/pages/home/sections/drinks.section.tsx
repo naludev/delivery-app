@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Text from "@components/text";
 import Card from "@components/card";
-import LinkButtonSolid from "@components/solidbutton";
 import { DrinksProps } from "@interfaces/drink";
 import { ICartItem } from "@interfaces/cart";
 import { addToCart, fetchCartTotalQuantity } from "@store/actions/cart.actions";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { Link } from "react-router-dom";
 
 const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const DrinksSection: React.FC<DrinksProps> = ({ drinks, error }) => {
               />
             ))}
           </div>
-          <LinkButtonSolid label="Ver todos los tragos" href="/tragos" />
+          <Link key='tragos' to='/tragos' className="inline-flex h-12 items-center justify-center rounded bg-zinc-200 px-6 shadow-md outline-none transition duration-200 text-xs font-semibold uppercase tracking-wider text-slate-900 hover:shadow-lg focus:ring">Ver todos los tragos</Link>
         </div>
       )}
     </div>
