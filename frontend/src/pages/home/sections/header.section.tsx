@@ -1,8 +1,7 @@
 import React from "react";
 import Logo from "@assets/instatragos.png";
-import LinkButtonSolid from "@components/solidbutton";
-import LinkButtonOutline from "@components/outlinebutton";
 import Text from "@components/text";
+import { Link } from "react-router-dom";
 
 const HeaderSection: React.FC = () => {
   return (
@@ -21,8 +20,8 @@ const HeaderSection: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-5">
-              <LinkButtonSolid label="Ver tragos" href="/tragos" />
-              <LinkButtonOutline className="text-white" label="Acerca de" href="/acerca" />
+            <Link key='tragos' to='/tragos' className="inline-flex h-12 items-center justify-center rounded bg-zinc-200 px-6 shadow-md outline-none transition duration-200 text-xs font-semibold uppercase tracking-wider text-slate-900 hover:shadow-lg focus:ring">Ver tragos</Link>
+            <Link key='tragos' to='/acerca' className="inline-flex h-12 items-center justify-center rounded text-zinc-200 px-6 shadow-md outline-none transition duration-200 text-xs font-semibold uppercase tracking-wider hover:shadow-lg focus:ring">Acerca de</Link>
             </div>
           </div>
         </div>
